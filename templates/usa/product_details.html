@@ -1,0 +1,70 @@
+{% include 'usa/header.html' %} {% load static %}
+<div class="container-xxl">
+    <div class="small-container">
+        <div class="row">
+            {% comment %}
+            <div class="col-2">
+                <img src="" alt="">
+            </div> {% endcomment %}
+            <div class="flex-box">
+                <div class="im">
+                    <img class="active" src="/media/{{dest2.img}}" class="active">
+                    <img src="/media/{{dest2.img2}}">
+                    <img src="/media/{{dest2.img3}}">
+                    <img src="/media/{{dest2.img4}}">
+                    <img src="/media/{{dest2.img5}}">
+                    <img src="/media/{{dest2.img6}}">
+                    <img src="/media/{{dest2.img7}}">
+                </div>
+            </div>
+            <div class="col-2">
+                <h2>{{dest2.name}}</h2>
+                <br>
+                <h3 class="pro_del">Product Detail</h3>
+                <p>{{dest2.desc}}</p>
+                <h4 class="price">$ {{dest2.sell_price_usa|floatformat:2}} <span class="actual-price">$ {{dest2.actual_price_usa|floatformat:2}}</span></h4>
+                <div>
+                    <button input="text" class="size-btn">S</button>
+                    <button input="text" class="size-btn">M</button>
+                    <button input="text" class="size-btn">L</button>
+                    <button input="text" class="size-btn">XL</button>
+                    <button input="text" class="size-btn">XXL</button>
+                    <button input="text" class="size-btn">XXXL</button>
+                </div>
+                {% if request.user.is_authenticated %} {% if item_already_in_cart %}
+                <div class="btn-groups">
+                    <a href="{% url 'showcart' %}"><button type = "submit" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>Go to cart</button></a>
+                    <a href="{% url 'checkout' %}"><button type = "submit" class = "buy-now-btn"><i class = "fas fa-wallet"></i>buy now</button></a>
+                </div>
+                {% else %}
+                <form action="/usa/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{dest2.id}} id="prod_id">
+                    <div class="btn-groups">
+                        <a href="{% url 'showcart' %}"><button type = "submit" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>add to cart</button></a>
+                        <a href="{% url 'checkout' %}"><button type = "submit" class = "buy-now-btn"><i class = "fas fa-wallet"></i>buy now</button></a>
+                    </div>
+                </form>
+                {% endif %} {% endif %}
+                <div class="desc_box">
+                    <h3 class="desc">Specification:</h3>
+                    <ol list-style-type: circle class="desc">Number of pieces :{{dest2.number_of_pieces|capfirst}} </ol>
+                    <ol list-style-type: circle class="desc">Garment Length :{{dest2.garment_Length|capfirst}} inch</ol>
+                    <ol list-style-type: circle class="desc">Colour : {{dest2.colours|capfirst}} </ol>
+                    <ol list-style-type: circle class="desc">Top Fabric : {{dest2.top_Fabric|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Bottom Fabric :{{dest2.bottom_Fabric|capfirst}} </ol>
+                    <ol list-style-type: circle class="desc">Print : {{dest2.print|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Closure Type : {{dest2.closure_Type|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Sleeves Type : {{dest2.sleeves_Type|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Hemline : {{dest2.hemline|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Transparency : {{dest2.transparency|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Weave : {{dest2.weave|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Neckline : {{dest2.neckline|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Occasion : {{dest2.occasion|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Detailing : {{dest2.detailings|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Washing Instructions : {{dest2.washing_Instructions|capfirst}}</ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br> {% include 'usa/footer.html' %}

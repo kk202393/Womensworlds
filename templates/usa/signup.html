@@ -1,0 +1,30 @@
+{% include 'usa/header.html' %}
+<br>
+<style>
+    .success {
+        color: rgb(247, 16, 16);
+    }
+</style>
+<section class="form-section">
+    <h2>Customer Registration Form</h2>
+    <div class="signup">
+        <form action="" method="post" class="signup-form">
+            {% csrf_token %} {% for fm in form %}
+            <div>
+                {{fm.label_tag}}{{fm}} <small>{{fm.errors|striptags}}</small>
+            </div>
+            {% endfor %} {% if messages %} {% for message in messages %}
+            <span {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</span>{% endfor %}{% endif%}
+            <br>
+            <br>
+            <div class="text-center"><small>Existing User ? <a href="{% url 'signin' %}"
+            class="text-danger">Login Now</a> </small></div>
+            <br> {% if form.non_field_errors %} {% for error in form.non_field_errors %}
+            <p>{{error}}</p>
+            {% endfor %} {% endif %}
+            <button type="submit" class="submit-btn">Sign up</button>
+        </form>
+    </div>
+</section>
+
+<br> {% include 'usa/footer.html' %}

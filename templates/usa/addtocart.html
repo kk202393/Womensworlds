@@ -1,0 +1,99 @@
+{% include 'usa/header.html' %}
+<div class="wrapper">
+    <div class="wrapper_content">
+        <div class="header_title">
+            <div class="title">
+                MY SHOPPING CART :
+            </div>
+        </div>
+        {% for cart in carts %}
+        <div class="product_wrap">
+            <div class="product_info">
+                <div class="product_img">
+                    <img src="{{cart.product_table.img.url}}" alt="ProductImage" width="200px" height="200px">
+                </div>
+                <div class="product_data">
+                    <div class="description">
+                        <div class="main_header">
+                            {{cart.product_table.name}}
+                        </div>
+                        <div class="sub_header">
+                            {{cart.product_table.desc}}
+                        </div>
+                    </div>
+                    <div class="qty">
+                        <div class="qty_select">
+                            <label for="quantity">Quantity:</label>
+                            <a class="minus-cart" pid={{cart.product_table.id}}><i class="fas fa-minus-square fa-lg"></i></a>
+                            <span id="quantity">{{cart.quantity}}</span>
+                            <a class="plus-cart" pid={{cart.product_table.id}}><i class="fas fa-plus-square fa-lg"></i></a>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <div class="current_price">$ {{cart.product_table.sell_price_usa|floatformat:2}}</div>
+                        <div class="normal_price">$ {{cart.product_table.actual_price_usa|floatformat:2}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="product_btns">
+                <div>
+                    <a class="remove-cart" pid={{cart.product_table.id}}>
+                        <button style="border: none; margin-right: 20px; background: none; cursor: pointer;">REMOVE</button>
+                    </a>
+                </div>|
+                <form action="/usa/listview" method="GET">
+                    <input type="hidden" name="prod_id" value="{{cart.product_table.id}}">
+                    <div>
+                        <a href="{% url 'wishlist' %}">
+                            <button type="submit" style="border: none; margin-left: 20px; background: none; cursor: pointer; ">MOVE TO WISHLIST</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="wrapper_amount">
+        <div class="header_title">
+            <div class="title">
+                TOTAL PRICE DETAILS:
+            </div>
+            {% comment %}
+            <div class="amountusa">
+                <b>$  <strong id="totalamountusa">{{totalamount|floatformat:2}}</strong></b>
+            </div> {% endcomment %}
+        </div>
+        <div class="price_details">
+            <div class="item">
+                <p>Bag Total :</p>
+                <p>$ <span id="amountusa">{{amount|floatformat:2}}</span></p>
+            </div>
+            <div class="item">
+                <p>Order Total :</p>
+                <p>$ <span id="totalamountusa">{{totalamount|floatformat:2}}</span></p>
+            </div>
+            <div class="item">
+                <p>Delivery Charges :</p>
+                <p>$ <span id="shippingamount">{{shipping_amount|floatformat:2}}</span></p>
+            </div>
+            <div style="color: green; font-size: 16px;" class="coupon">
+                <b><p>Total Discount :</p></b>
+                <b><p>$ <span id="discountusa">{{discount|floatformat:2}}</span></p></b>
+            </div>
+            <div style="color: red; font-size: 16px;" class="total">
+                <p>Total :</p>
+                <p>$ <strong id="totalamounusa">{{totalamount|floatformat:2}}</strong></p>
+            </div>
+            <br>
+            <div>
+                <p style="font-size: 18px; color:green;">
+                    You will save $ <span id="disusa">{{dis|floatformat:2}}</span> on this order
+                </p>
+            </div>
+        </div>
+        <div class="checkout">
+            <a href="{% url 'checkout' %}" role="button" class="checkout_btn">Place Order</a>
+        </div>
+    </div>
+</div>
+{% include "usa/footer.html" %}

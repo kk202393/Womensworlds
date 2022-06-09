@@ -1,0 +1,2 @@
+{% for abc in ab %} Hi {{abc.customer.name}}, Thank you for being our valued customer. Your order has been successfully placed. Order placed on :-{{abc.ordered_date}}. Order ID: {{abc.razorpay_order_id}} Product name is {{abc.product_table.name}} Delivery
+Address :{{abc.customer.address}} {{abc.customer.Mobile_no}} Please note that you will receive an update through email/SMS once the product will packed and shipped. {% endfor %}

@@ -1,0 +1,283 @@
+{% include 'india/header.html' %} {% load static %}
+<div class="container-xxl">
+    <div class="small-container">
+        <div class="row">
+            {% comment %}
+            <div class="col-2">
+                <img src="" alt="">
+            </div> {% endcomment %}
+            <div class="flex-box">
+                <div class="im">
+                    <img class="active" src="/media/{{dest2.img}}" class="active">
+                    <img src="/media/{{dest2.img2}}">
+                    <img src="/media/{{dest2.img3}}">
+                    <img src="/media/{{dest2.img4}}">
+                    <img src="/media/{{dest2.img5}}">
+                    <img src="/media/{{dest2.img6}}">
+                    <img src="/media/{{dest2.img7}}">
+                </div>
+            </div>
+            <div class="col-2">
+                <h2>{{dest2.name}}</h2>
+                <br>
+                <h3 class="pro_del">Product Detail</h3>
+                <p>{{dest2.desc}}</p>
+                <h4 class="price">Rs. {{dest2.sell_price}} <span class="actual-price"> Rs.{{dest2.actual_price}}</span></h4>
+                <div>
+                    <button input="submit" value="S" class="size-btn">S</button>
+                    <button input="submit" value="M" class="size-btn">M</button>
+                    <button input="submit" value="L" class="size-btn">L</button>
+                    <button input="submit" value="XL" class="size-btn">XL</button>
+                    <button input="submit" value="XXL" class="size-btn">XXL</button>
+                    <button input="submit" value="XXXL" class="size-btn">XXXL</button>
+                </div>
+                {% if request.user.is_authenticated %} {% if item_already_in_cart %}
+                <div class="btn-groups">
+                    <a href="{% url 'showcartind' %}"><button type = "submit" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>Go to cart</button></a>
+                    <a href="{% url 'checkout' %}"><button type = "submit" class = "buy-now-btn"><i class = "fas fa-wallet"></i>buy now</button></a>
+                </div>
+                {% else %}
+                <form action="/india/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value={{dest2.id}} id="prod_id">
+                    <div class="btn-groups">
+                        <a href="{% url 'showcart' %}"><button type = "submit" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>add to cart</button></a>
+                        <a href="{% url 'checkout' %}"><button type = "submit" class = "buy-now-btn"><i class = "fas fa-wallet"></i>buy now</button></a>
+                    </div>
+                </form>
+                {% endif %} {% endif %}
+                <div class="desc_box">
+                    <h3 class="desc">Specification:</h3>
+                    <ol list-style-type: circle class="desc">Number of pieces :{{dest2.number_of_pieces|capfirst}} </ol>
+                    <ol list-style-type: circle class="desc">Garment Length :{{dest2.garment_Length|capfirst}} inch</ol>
+                    <ol list-style-type: circle class="desc">Colour : {{dest2.colours|capfirst}} </ol>
+                    <ol list-style-type: circle class="desc">Top Fabric : {{dest2.top_Fabric|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Bottom Fabric :{{dest2.bottom_Fabric|capfirst}} </ol>
+                    <ol list-style-type: circle class="desc">Print : {{dest2.print|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Closure Type : {{dest2.closure_Type|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Sleeves Type : {{dest2.sleeves_Type|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Hemline : {{dest2.hemline|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Transparency : {{dest2.transparency|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Weave : {{dest2.weave|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Neckline : {{dest2.neckline|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Occasion : {{dest2.occasion|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Detailing : {{dest2.detailings|capfirst}}</ol>
+                    <ol list-style-type: circle class="desc">Washing Instructions : {{dest2.washing_Instructions|capfirst}}</ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<section class="product_trail">
+    <br>
+    <h2 class="product-category_trail">Related Product</h2>
+    <br> {% for abc in related_product %}
+    <div class="product-container_trail">
+        <div class="product-card_trail">
+            <div class="product-image_trail">
+                <span class="discount-tag_trail">{{abc.disscunt}}% off</span>
+                <img href="#" src="{{abc.img.url}}" class="product-thumb_trail">
+                <input type="text" id="product_id">
+                <a href="/india/product/{{abc.product_slug}}"><button class="card-bnt_trail">Get Details</button></a>
+            </div>
+            <div class="product-info_trail">
+                <h2 class="product-brand_trail">{{abc.name}}</h2>
+                <p class="product-short-des">{{abc.desc}}</p>
+                <span class="price_trail">Rs.{{abc.ind_sell_price}}</span> <span class="actual-price"> Rs.{{abc.actual_price}}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+<hr>
+<style>
+    .bar-container {
+        width: 100%;
+        background-color: #f1f1f1;
+        text-align: center;
+        color: white;
+    }
+    
+    .bar-5 {
+        width: 60%;
+        height: 18px;
+        background-color: #04AA6D;
+    }
+    
+    .bar-4 {
+        width: 30%;
+        height: 18px;
+        background-color: #2196F3;
+    }
+    
+    .bar-3 {
+        width: 10%;
+        height: 18px;
+        background-color: #00bcd4;
+    }
+    
+    .bar-2 {
+        width: 4%;
+        height: 18px;
+        background-color: #ff9800;
+    }
+    
+    .bar-1 {
+        width: 15%;
+        height: 18px;
+        background-color: #f44336;
+    }
+    
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    .right {
+        text-align: right;
+    }
+    
+    .heading {
+        font-size: 25px;
+        margin-right: 25px;
+    }
+    
+    .fa {
+        font-size: 25px;
+    }
+    
+    .checked {
+        color: orange;
+    }
+    /* Three column layout */
+    
+    .side {
+        float: left;
+        width: 15%;
+        margin-top: 10px;
+    }
+    
+    .middle {
+        margin-top: 10px;
+        float: left;
+        width: 70%;
+    }
+    
+    .Rating {
+        display: flex;
+    }
+    
+    .row p {
+        width: 500px;
+        margin-left: 18px;
+    }
+    
+    .Rate {
+        margin-left: 0%;
+    }
+    
+    .Rate p {
+        font-size: 12px;
+    }
+    
+    .row h5 {
+        margin-left: 10px;
+    }
+    
+    .rate_section {
+        margin: 1% 15% 0% 15%;
+    }
+</style>
+<section class="Rating">
+    <div class="rate_section">
+        <div class="Rate">
+            <span style="font-size: 25px;margin-right: 25px;" class="heading">User Rating</span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <p>4.1 average based on 254 reviews.</p>
+            <hr style="border:2px solid #f1f1f1">
+            <div class="row">
+                <div class="side">
+                    <div>5 star</div>
+                </div>
+                <div class="middle">
+                    <div class="bar-container">
+                        <div class="bar-5"></div>
+                    </div>
+                </div>
+                <div class="side right">
+                    <div>150</div>
+                </div>
+                <div class="side">
+                    <div>4 star</div>
+                </div>
+                <div class="middle">
+                    <div class="bar-container">
+                        <div class="bar-4"></div>
+                    </div>
+                </div>
+                <div class="side right">
+                    <div>63</div>
+                </div>
+                <div class="side">
+                    <div>3 star</div>
+                </div>
+                <div class="middle">
+                    <div class="bar-container">
+                        <div class="bar-3"></div>
+                    </div>
+                </div>
+                <div class="side right">
+                    <div>15</div>
+                </div>
+                <div class="side">
+                    <div>2 star</div>
+                </div>
+                <div class="middle">
+                    <div class="bar-container">
+                        <div class="bar-2"></div>
+                    </div>
+                </div>
+                <div class="side right">
+                    <div>6</div>
+                </div>
+                <div class="side">
+                    <div>1 star</div>
+                </div>
+                <div class="middle">
+                    <div class="bar-container">
+                        <div class="bar-1"></div>
+                    </div>
+                </div>
+                <div class="side right">
+                    <div>20</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <div class="row">
+            <div style=" margin-left: 10px; display: flex; border: .5px solid black; padding: 2px; background-color: white;">
+                <img style="width: 20px;" src="../../static/img/star.PNG" alt="">
+                <h5>4.1</h5>
+            </div>
+            <div>
+                <p>User Name</p>
+            </div>
+        </div>
+        <div class="row">
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, minus. Obcaecati et aut non quas quidem aspernatur eligendi porro? Quas voluptatibus pariatur animi ab nostrum temporibus non assumenda earum optio.</p>
+        </div>
+        <div class="row">
+            <img style="width: 80px; margin-left:20px" src="../../static/img1/card1.png" alt="">
+        </div>
+    </div>
+</section>
+
+<hr>
+<br> {% include 'india/footer.html' %}

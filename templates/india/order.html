@@ -1,0 +1,60 @@
+{% include 'india/header.html' %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <!--profile and Address-->
+            <h3 style="color: rgb(224, 51, 8); font-size: 18px;">Welcome {{request.user|capfirst}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        {% for op in order_placed %}
+        <div class="col-md-2">
+            <!--free space-->
+            <div class="row">
+                <div class="col-3"><img src="{{op.product_table.img.url}}" alt="" class="img-fluid" height="150" width="150">
+                </div>
+                <div class="col-3 offset-1">
+                    <pre>  Product: {{op.product_table.name}}</pre>
+                    <pre>  Quantity: {{op.quantity}}</pre>
+                    <pre>  Order Status: {{op.status}}</pre>
+                    <pre>  price: {{op.total_cost}}</pre>
+                    <br>
+                    <form action="/india/invoice/" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="order_id" value="{{op.id}}">
+                        <button style="margin-left: 20px;" class="btn" type="submit">Invoice</button>
+                    </form>
+                </div>
+                <div class="col-3 offset-1"><pre>                       </pre></div>
+                <div class="col-2 offset-1">
+                    {% if op.status == 'Accepted' %}
+                    <div class="progress">
+                        <progress id="file" value="20" max="100">20%</progress>
+                        <h5>20%</h5>
+                    </div>
+                    {% endif %} {% if op.status == 'Packed' %}
+                    <div class="progress">
+                        <progress id="file" value="40" max="100"> 40% </progress>
+                        <h5>40%</h5>
+                    </div>
+                    {% endif %} {% if op.status == 'On The Way' %}
+                    <div class="progress">
+                        <progress id="file" value="70" max="100"> 70% </progress>
+                        <h5>70%</h5>
+                    </div>
+                    {% endif %} {% if op.status == 'Delivered' %}
+                    <div class="progress">
+                        <progress id="file" value="100" max="100"> 100% </progress>
+                        <h5>100%</h5>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+<br> {% include 'india/footer.html' %}

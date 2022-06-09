@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <!--profile and Address-->
+            <pre><h3>Welcome {{request.user|capfirst}}     </pre></h3> 
+            <br>
+            <a href="#"><button type="button" class="btn btn-primary">Profile</button></a>
+            <br>
+            <br>
+            <a href="#"><button type="button" class="btn btn-primary">Address</button></a>
+            <br>
+            <div class="row">
+                {% for op in order_placed %}
+                <div class="col-md-2">
+                    <!--free space-->
+                    <div class="row">
+                        <div class="col-md-3"><img src="{{op.product_table.img.url}}" alt="" class="img-fluid" height="150" width="150">
+                        </div>
+                        <div class="col-md-3">
+                            <p>Product:{{op.product_table.name}}</p>
+                            <p>Quantity:{{op.quantity}}</p> 
+                            <p>Order Status:{{op.status}}</p></div>
+                        <div class="col-md-3"><p>Product:{{op.total_amount}}</p></div>
+                        <div class="col-md-3">
+                            {% if op.status == 'Accepted' %}
+                                <div class="progress">
+                                    <progress id="file" value="20" max="100"> 20% </progress>
+                                </div>
+                                {% endif %}
+                                {% if op.status == 'Packed' %}
+                                <div class="progress">
+                                    <progress id="file" value="40" max="100"> 40% </progress>
+                                </div>
+                                {% endif %}            
+                                {% if op.status == 'On The Way' %}
+                                <div class="progress">
+                                    <progress id="file" value="70" max="100"> 70% </progress>
+                                </div>
+                                {% endif %}
+                                {% if op.status == 'Delivered' %}
+                                <div class="progress">
+                                    <progress id="file" value="100" max="100"> 100% </progress>
+                                </div>
+                                {% endif %}
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}   
+            </div>
+        </div>
+    </div>
+</div>

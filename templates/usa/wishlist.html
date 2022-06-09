@@ -1,0 +1,59 @@
+{% include 'usa/header.html' %}
+<div class="wrapper">
+    <div class="wrapper_content">
+        <div class="header_title">
+            <div class="title">
+                MY WHISHLIST :
+            </div>
+        </div>
+        {% for cart in wlist %}
+        <div class="product_wrap">
+            <div class="product_info">
+                <div class="product_img">
+                    <img src="{{cart.product_table.img.url}}" alt="ProductImage" width="200px" height="200px">
+                </div>
+                <div class="product_data">
+                    <div class="description">
+                        <div class="main_header">
+                            {{cart.product_table.name}}
+                        </div>
+                        <div class="sub_header">
+                            {{cart.product_table.desc}}
+                        </div>
+                    </div>
+                    <!-- <div class="qty">
+                        <div class="qty_select">
+                            <label for="quantity">Quantity:</label>
+                            <a class="minus-cart" pid={{cart.product_table.id}}><i class="fas fa-minus-square fa-lg"></i></a>
+                            <span id="quantity">{{cart.quantity}}</span>
+                            <a class="plus-cart" pid={{cart.product_table.id}}><i class="fas fa-plus-square fa-lg"></i></a>
+                        </div>
+                    </div> -->
+                    <div class="price">
+                        <div class="current_price">Rs.{{cart.product_table.sell_price}}</div>
+                        <div class="normal_price">Rs.{{cart.product_table.actual_price}}</div>
+                    </div>
+                </div>
+            </div>
+            <form action="/usa/remove_list">
+                <div class="product_btns">
+                    <div>
+                        <a href="{% url 'wishlist' %}" class="remove-wishlish" pid={{cart.product_table.id}}>
+                            <button style="border: none; margin-right: 20px; background: none; cursor: pointer;">REMOVE</button>
+                        </a>
+                    </div>
+            </form>|{% for cart in dest2 %}
+            <form action="/usa/add-to-wishlist" method="GET">
+                <input type="hidden" name="prod_id" value="{{cart.product_table.id}}"> {% endfor %}
+                <div>
+                    <a href="">
+                        <button type="submit" style="border: none; margin-left: 20px; background: none; cursor: pointer;">MOVE TO CART</button>
+                    </a>
+                </div>
+            </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% include "usa/footer.html" %}

@@ -1,0 +1,50 @@
+{% include "india/header.html" %}
+<style>
+    .success {
+        color: rgb(247, 16, 16);
+    }
+    
+    .row h3 {
+        font-size: 20px;
+    }
+    
+    .btn {
+        text-decoration: none;
+        font-size: 18px;
+        margin-left: 25px;
+        border: 1px solid rgb(0, 0, 0);
+        padding: 8px;
+        color: rgb(224, 51, 8);
+        cursor: pointer;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1">
+            <img src="../../static/img1/product-4.jpg" alt="img" class="profile_pic">
+            <h3>Welcome to women's world {{request.user|capfirst}}</h3>
+            <br>
+            <ul class="list">
+                <li class="d-grid"><a href="{% url 'profileind' %}" class="btn {{active}} ">Profile</a></li>
+                <br>
+                <li class="d-grid"><a href="{% url 'addressind' %}" class="btn">Address</a></li>
+            </ul>
+        </div>
+        <div class="col">
+            <form action="" method="post">
+                {% csrf_token %} {% for fm in form %}
+                <div class="form-group">
+                    {{fm.label_tag}} {{fm}} <small>{{fm.errors|striptags}}</small>
+                </div>
+                {% endfor %}
+                <br>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            {% if messages %} {% for message in messages %}
+            <span {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</span>{% endfor %}{% endif%}
+        </div>
+    </div>
+</div>
+</div>
+<br>
+<br> {% include "india/footer.html" %}

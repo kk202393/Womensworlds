@@ -1,0 +1,242 @@
+<br>
+<style>
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    a {
+        text-decoration: underline;
+        font-size: 15px;
+    }
+    
+    p {
+        font-size: 15px;
+    }
+    
+    header {
+        padding: 10px 0;
+        margin-bottom: 30px;
+    }
+    
+    #logo {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    #logo img {
+        width: 90px;
+    }
+    
+    h2 {
+        color: #050505;
+        font-size: 2.8em;
+        line-height: 1.4em;
+        font-weight: normal;
+        text-align: center;
+        margin: 0 0 20px 0;
+    }
+    
+    #project {
+        float: left;
+    }
+    
+    #project span {
+        color: #0a0a0a;
+        text-align: right;
+        width: 52px;
+        margin-right: 10px;
+        display: inline-block;
+        font-size: 15px;
+    }
+    
+    #company {
+        float: right;
+        text-align: right;
+    }
+    
+    #project div,
+    #company div {
+        white-space: nowrap;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 20px;
+    }
+    
+    table th,
+    table td {
+        text-align: center;
+    }
+    
+    table th {
+        color: #0a0a0a;
+        border-bottom: 1px solid #070707;
+        background-color: #a6afb8;
+    }
+    
+    table .service,
+    table .desc {
+        text-align: left;
+    }
+    
+    table td {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    
+    table tr {
+        border-bottom: 1px solid #C1CED9;
+    }
+    
+    table td.service,
+    table td.desc {
+        vertical-align: top;
+    }
+    
+    td,
+    th {
+        border: 1px solid black;
+    }
+    
+    table td.unit,
+    table td.qty,
+    table td.total {
+        font-size: 1.2em;
+    }
+    
+    #notices .notice {
+        color: #5D6975;
+        font-size: 1.2em;
+    }
+    
+    .address {
+        font-size: 16px;
+        color: rgb(5, 5, 5);
+    }
+    
+    .brand-name {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    
+    .office_add {
+        font-size: 15px;
+    }
+    
+    #ab {
+        display: inline;
+    }
+</style>
+<div class="container-footer">
+    <header class="clearfix">
+        <div style="display:flex; justify-content:center; align-items:center;">
+            <img src="E:\django\Womensworlds\static/invoice.jpg" alt="img" style="width: 70px;"></div>
+        <!-- <img src="../../static/invoice.jpg" alt="img" style="width: 70px;"></div> -->
+        <div id="logo" style="display:flex; justify-content:center; align-items:center;">
+            <h2 class="brand-name">Women's Worlds</h2>
+        </div>
+        <div id="ab">
+            <div id="company" class="clearfix">
+                {% for dest in ab %}
+                <div><span class="office_add"><b>SOLD BY:</b></span>
+                    <div class="address">
+                        <b>Women's World</b><br> Rz-143, 3rd Floor <br> Main Jagdamba road, <br> Tughlakabad extension <br> New Delhi-110019 <br> India
+                    </div>
+                </div>
+                <div><span class="office_add"><b>Phone No:</b>+91-8383993912</span>
+                </div>
+                <div><a style="color: black; text-decoration: none;" href="info@womensworld.in">sales@womensworld.in</a></div>
+                <div><a style="color: black; text-decoration: none;" href="www.womensworld.in">www.womensworld.in</a></div>
+                <div><span class="office_add"><b>PAN No:</b> ADWPV3447R</span>
+                </div>
+                <div><span class="office_add"><b>GST No:</b> 07ADWPV3447R1Z8</span>
+                </div>
+            </div>
+            <div id="project">
+                <div><span><b>Sold To:</b> </span>
+                </div>
+                <div><span><b>Invoice No :</b> WW2206{{dest.id}}</span>
+                </div>
+                <div><span><b>Customer Name:</b>{{dest.customer.name|capfirst}}</span>
+                </div>
+                <div><span><b>Date:</b>{{dest.ordered_date}}</span>
+                </div>
+                <div><span><b>Order No:</b>{{dest.razorpay_order_id}}</span>
+                </div>
+                <div><span><b>Phone No:</b>{{dest.customer.Mobile_no}}</span>
+                </div>
+                <div><span style="font-size: 15px;"><b>Billing Address:</b>
+                    <!-- shipping address -->{{dest.customer.address}}<br>
+                    <!-- shipping address -->{{dest.customer.locality}}<br>
+                    <!-- shipping address -->{{dest.customer.city}}
+                    <!-- shipping address -->{{dest.customer.state}}
+                    <!-- shipping address -->{{dest.customer.zipcode}}
+            </span>
+                </div>
+                <div><span style="font-size: 15px;"><b>Shipping Address:</b>
+                <!-- shipping address -->{{dest.customer.address}}  <br>
+                <!-- shipping address -->{{dest.customer.locality}}<br>
+                <!-- shipping address -->{{dest.customer.city}}
+                <!-- shipping address -->{{dest.customer.state}}
+                <!-- shipping address -->{{dest.customer.zipcode}}
+                </span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="table-container" style="overflow-x:auto">
+        <table class="table" style="width:100%; padding: 5px 0px 0px 0px ;">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Shipping</th>
+                    <th>CGST</th>
+                    <th>SGST</th>
+                    <th>IGST</th>
+                    <th>Tax Amt.</th>
+                    <th>Discount</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>{{dest.product_table.name}}</td>
+                    <td>{{dest.quantity}}</td>
+                    <td>{{dest.price}}</td>
+                    <td>Free</td>
+                    <td>Null</td>
+                    <td>Null</td>
+                    <td>Null</td>
+                    <td>Null</td>
+                    <td>Null</td>
+                    <td>{{dest.price}}</td>
+                </tr>
+                <tr>
+                    <td>Total:</td>
+                    <td colspan="10"><b>{{dest.price}}</b></td>
+                </tr>
+                <tr>
+                    <td colspan="11">Amount in words: <br><b>{{dest.priceinwords|capfirst}}</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="text-align:right; font-size:18px; margin-bottom: 20px;">For Women's World
+        <p>
+            <br>
+            <p style="text-align:right; font-size:15px; margin-bottom: 20px;">Authorised Signatory
+                <p>
+                    <p style="text-align:right; font-size:12px;">*All values are in INR
+                        <p><br>
+</div>
+{% endfor %}
+
+<a style="margin-left: 50px;" href="{% url 'render_pdf_viewind' %}"><button type="submit" style="border: 1px solid black;  font-size: 18px; cursor: pointer; color: red; padding: 10px;">Dowmload Invoice</button></a>

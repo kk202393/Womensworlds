@@ -1,0 +1,26 @@
+{% include "usa/header.html" %}
+<!--womens kurta collection in affordable price  start -->
+<section class="product_trail">
+    <br>
+    <br>
+    <h2 class="product-category_trail">Coming very soon.......</h2>
+    <br> {% for abc in dest %}
+    <div class="product-container_trail">
+        <div class="product-card_trail">
+            <div class="product-image_trail">
+                <span class="discount-tag_trail">{{abc.disscunt}}% off</span>
+                <img href="#" src="{{abc.img.url}}" class="product-thumb_trail">
+                <input type="text" id="product_id">
+                <a href="/product/{{abc.product_slug}}"><button class="card-bnt_trail">Get Details</button></a>
+            </div>
+            <div class="product-info_trail">
+                <h2 class="product-brand_trail">{{abc.name}}</h2>
+                <p class="product-short-des">{{abc.desc}}</p>
+                <span class="price_trail">Rs.{{abc.sell_price}}</span> <span class="actual-price"> Rs.{{abc.actual_price}}</span>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+</section>
+<br> {% include "usa/footer.html" %}

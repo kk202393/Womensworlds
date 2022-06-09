@@ -1,0 +1,149 @@
+{% include "india/header.html" %}
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-font-smoothing: antialiased;
+        -o-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+    /* body {
+        font-family: "Roboto", Helvetica, Arial, sans-serif;
+        font-weight: 100;
+        font-size: 12px;
+        line-height: 30px;
+    } */
+    
+    .container {
+        /* width: 100%; */
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    #contact {
+        background: none;
+        padding: 25px;
+        margin-left: 20px;
+        z-index: 0;
+        /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
+    }
+    
+    #contact h3 {
+        /* display: block; */
+        font-size: 30px;
+        font-weight: 300;
+        margin-bottom: 10px;
+    }
+    
+    #contact h4 {
+        margin: 5px 0 15px;
+        /* display: block; */
+        font-size: 16px;
+        font-weight: 500;
+        color: rgb(224, 51, 8);
+    }
+    
+    fieldset {
+        border: medium none !important;
+        margin: 0 0 10px;
+        padding: 0;
+    }
+    
+    #contact input[type="text"],
+    #contact input[type="email"],
+    #contact input[type="tel"],
+    #contact input[type="url"],
+    #contact textarea {
+        width: 100%;
+        border: 1px solid #ccc;
+        background: #FFF;
+        margin: 0 0 5px;
+        padding: 10px;
+    }
+    
+    #contact button[type="submit"] {
+        cursor: pointer;
+        width: 100%;
+        border: none;
+        background: #4CAF50;
+        color: #FFF;
+        margin: 0 0 5px;
+        padding: 10px;
+        font-size: 15px;
+    }
+    
+    #contact button[type="submit"]:hover {
+        background: #43A047;
+        transition: background-color 0.3s ease-in-out;
+    }
+    
+    #contact button[type="submit"]:active {
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    #contact input:focus,
+    #contact textarea:focus {
+        outline: 0;
+        border: 1px solid #aaa;
+    }
+    
+    #main h4 {
+        font-size: 18px;
+    }
+</style>
+<div class="container-xxl">
+    <div class="row">
+        <h2 class=""><pre>                                                                                        Wholesale-Enquiry</pre></h2>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <form id="contact" action="" method="post" id="main">
+                {% csrf_token %}
+                <h4>women's world is one of the most popular Indian clothing brand globally. <br> If you are looking to buy our merchandise in bulk. you may fill this form <br> and we shall connect with you through convenient medium soon. </h4>
+                <fieldset>
+                    <input name="name" placeholder="Name" type="text" tabindex="1" required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input name="phone" placeholder="Phone Number with Country code" type="tel" tabindex="2" required>
+                </fieldset>
+                <fieldset>
+                    <input name="Whatsapp" placeholder="Whatsapp No. " type="tel" tabindex="3" required>
+                </fieldset>
+                <fieldset>
+                    <input name="email" placeholder="Email Address" type="tel" tabindex="3" required>
+                </fieldset>
+                <fieldset>
+                    <input name="country" placeholder="Country" type="text" tabindex="4" required>
+                </fieldset>
+                <fieldset>
+                    <textarea name="comment" placeholder="Enquiry" tabindex="6" required></textarea>
+                </fieldset>
+                <fieldset>
+                    <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="offset-md-4">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <pre><b>           Address</b>:Women's World, <br>                          RZ-143, Main Jagdamba Road, <br>                          Tughlakabad Extension <br>                          New Delhi -110019</pre>
+            <br>
+            <pre> <b>          Whatsapp No. </b> :+91-8383993912</pre>
+            <br>
+            <pre> <b>          Phone No. </b> :011-43382812</pre>
+            <br>
+            <pre> <b>          Email Id </b> :sales@womensworld.in</pre>
+            <br>
+        </div>
+    </div>
+</div>
+<br> {% include "india/footer.html" %}

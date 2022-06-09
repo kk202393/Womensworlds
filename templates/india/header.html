@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='../../static/style.css'>
+    <link rel="icon" href="../../static/kk.png" class=a bc type="image/x-icon">
+    <title>Women's World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href='../../static/about-us.css'>
+    <link rel="stylesheet" href='../../static/profile.css'>
+    <link rel="stylesheet" href='../../static/cart.css'>
+    <link rel="stylesheet" href='../../static/checkout.css'>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href='../../static/login.css'>
+    <link rel="stylesheet" href='../../static/product_details.css'>
+    <link rel="stylesheet" href='../../static/product.css'>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+</head>
+
+<body>
+    <div class="section">
+        <div class="header">
+            <div class='offer'>
+                <marquee class='offer_text' direction="right" behavior="scrolling">Extra 10% off on Every First Order T&C apply!. Free shipping all over India above cart value of 799.</marquee>
+            </div>
+            <!--header-start-->
+            <div class="logo">
+                <a href="{% url 'homeind' %}" class="logo-icon">
+                    <div class="nav_img">
+                        <img src='../../static/ff2.jpg'>
+                    </div>
+                </a>
+                <div>
+                    <div class="nav-item">
+                        <form action="{% url 'searchind' %}" class="box" method="POST">
+                            {% csrf_token %}
+                            <div class="search">
+                                <input type="text" class="search-box" placeholder="search brand, product" name="searched">
+                                <button class="search-bnt">search</button>
+                            </div>
+                        </form>
+                        {% if request.user.is_authenticated %}
+                        <div class="dropdown navbar">
+                            <button href="#" id="user" class="dropbtn">{{request.user.username|capfirst}}</button>
+                            <div class="dropdown-content">
+                                <div class="column">
+                                    <a href="{% url 'profileind' %}">Profile</a>
+                                    <a href="{% url 'orderind' %}">My Order</a>
+                                    <a href="{% url 'wishlistind' %}">My Wishlist</a>
+                                    <a href="{% url 'changepasswordind' %}">Change Password</a>
+                                    <a href="{% url 'logoutind' %}">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-interactions">
+                    <div class="cart">
+                        <a href="{% url 'showcartind' %}"> <img src='../../static/img/cart.png' class="cart-icon"></a>
+                        <span class="cart-item-count">{{totalitem}}</span>
+                    </div>
+                    {% else %}
+                    <div class="user">
+                        <a class="dropdown" href="{% url 'loginind' %}">Signup</a>
+                        <a class="dropdown" href="{% url 'signinind' %}"><pre>  Signin</pre> </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="nav">
+                <div class="navbar">
+                    <div class="dropdown">
+                        <a href='{% url "homeind" %}' class="dropbtn">Home</a>
+                    </div>
+                    <div class="dropdown">
+                        <button href="#" class="dropbtn">Women</button>
+                        <div class="dropdown-content">
+                            <div class="row">
+                                <div class="column">
+                                    <h3 id="rr">Apparel</h3>
+                                    <a href="{% url 'kurtaind' %}">Kurta</a>
+                                    <a href="{% url 'topind' %}">Tops/Tunics</a>
+                                    <a href="{% url 'suitind' %}">Suit/Kurta Palazzo set</a>
+                                    <a href="{% url 'indoind' %}">Indowestern</a>
+                                    <a href="{% url 'gounind' %}">Gown</a>
+                                    <a href="{% url 'womenPalazzo&pantsind' %}">Palazzo/Pants</a>
+                                    <a href="{% url 'womenLehengaind' %}">Lehenga</a>
+                                    <a href="{% url 'womenSkirtsind' %}">Skirts</a>
+                                    <a href="{% url 'womenNight_Wearind' %}">Night Wear</a>
+                                </div>
+                                <div class="column">
+                                    <h3 id="rr">Sarees</h3>
+                                    <a href="{% url 'womenCasual_Wearind' %}">Casual Wear</a>
+                                    <a href="{% url 'womenParty_Wearind' %}">Party Wear</a>
+                                    <a href="{% url 'womenBlouseind' %}">Blouse</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button href="#" class="dropbtn">Husband</button>
+                        <div class="dropdown-content">
+                            <div class="column">
+                                <a href="{% url 'husbandShirtsind' %}">Shirts</a>
+                                <a href="{% url 'husbandKurtaind' %}">Kurta</a>
+                                <a href="{% url 'husbandEmbroideredkurtaind' %}">Embroidered kurta</a>
+                                <a href="{% url 'husbandWaistcoatind' %}">Waistcoat</a>
+                                <a href="{% url 'husbandShortkurtaind' %}">Short kurta</a>
+                                <a href="{% url 'husbandKurtapajamasetind' %}">Kurta pajama set</a>
+                                <a href="{% url 'husbandSherwaniind' %}">Sherwani</a>
+                                <a href="{% url 'husbandNightWearind' %}">Night Wear</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button href="#" class="dropbtn">Kids</button>
+                        <div class="dropdown-content">
+                            <div class="row">
+                                <div class="column">
+                                    <h3 id="rr">Girls</h3>
+                                    <a href="{% url 'kidsgirlsFrocksind' %}">Frocks</a>
+                                    <a href="{% url 'kidsgirlsKurtasetsind' %}">Kurta sets</a>
+                                    <a href="{% url 'kidsgirlsLehengasetsind' %}">Lehenga sets</a>
+                                    <a href="{% url 'kidsgirlsTops_Tunicsind' %}">Tops & Tunics</a>
+                                    <a href="{% url 'kidsgirlsNight_Wearind' %}">Night Wear</a>
+                                </div>
+                                <div class="column">
+                                    <h3 id="rr">Boys</h3>
+                                    <a href="{% url 'kidsboysKurtaind' %}">Kurta</a>
+                                    <a href="{% url 'kidsboysKurtasetsind' %}">Kurta sets</a>
+                                    <a href="{% url 'kidsboysPartyWearind' %}">Party Wear</a>
+                                    <a href="{% url 'kidsboysShirtind' %}">Shirt</a>
+                                    <a href="{% url 'kidsboysNightWearind' %}">Night Wear</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button href="#" class="dropbtn">Jewellery</button>
+                        <div class="dropdown-content">
+                            <div class="column">
+                                <a href="{% url 'Fashion_jewelleryind' %}">Fashion jewellery</a>
+                                <a href="{% url 'Earringsind' %}">Earrings</a>
+                                <a href="{% url 'Flower_jewelleryind' %}">Flower jewellery</a>
+                                <a href="{% url 'Silver_jewelleryind' %}">Silver jewellery</a>
+                                <a href="{% url 'Necklace_Pendantind' %}">Necklace & Pendant</a>
+                                <a href="{% url 'Bracelets_Bangleind' %}">Bracelets & Bangle</a>
+                                <a href="{% url 'Ringsind' %}">Rings</a>
+                                <a href="{% url 'Hair_Accessoriesind' %}">Hair Accessories</a>
+                                <a href="{% url 'Menjewelleryind' %}">Men's jewellery</a>
+                                <a href="{% url 'Kids_jewelleryind' %}">Kids jewellery</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button href="#" class="dropbtn">Accessories</button>
+                        <div class="dropdown-content">
+                            <div class="column">
+                                <a href="{% url 'Scarfind' %}">Scarf</a>
+                                <a href="{% url 'waistbandind' %}">waistband</a>
+                                <a href="{% url 'Potliind' %}">Potli/Clutch bags</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a href="{% url 'Personal_careind' %}" class="dropbtn">Personal care</a>
+                    </div>
+                    <div class="dropdown">
+                        <button href="{% url 'Wedding_Collectionind' %}" class="dropbtn">Wedding Collection</button>
+                        <div class="dropdown-content">
+                            <div class="column">
+                                <a href="{% url 'gounind' %}">Groom</a>
+                                <a href="{% url 'Brideind' %}">Bride</a>
+                                <a href="{% url 'Groom_Bride_Familyind' %}">Groom & Bride Family</a>
+                                <a href="{% url 'Bridesmaidsind' %}">Bridesmaids</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a href="{% url 'Designer_Collectionind' %}" class="dropbtn">Designer Collection</a>
+                    </div>
+                    <div class="dropdown">
+                        <button href="#" class="dropbtn">Sale</button>
+                        <div class="dropdown-content">
+                            <div class="column">
+                                <a href="{% url 'Under_799ind' %}">Under 799</a>
+                                <a href="{% url 'Under_899ind' %}">Under 899</a>
+                                <a href="{% url 'Under_999ind' %}">Under 999</a>
+                            </div>
+                        </div>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="dropdown">
+                            <p class="dropbtn"><button type="submit" name="IND" value="IND" style="color: rgb(224, 51, 8); cursor: pointer; border: none; background: none;">IND
+                                <img style="cursor:pointer ;" class="flag" src="../../static/img/IND.jpg"></button>
+                            </p>
+                            <div class="dropdown-content">
+                                <div class="column">
+                                    <div>
+                                        <a style="color: rgb(224, 51, 8); cursor: pointer; border: none; background: none;cursor: pointer; font-size: 14px;">IND
+                                            <img style="cursor:pointer ;" class="flag" src="../../static/img/IND.jpg"></button>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="/usa/" style="font-size: 14px; color: rgb(224, 51, 8); cursor: pointer; border: none; background: none;cursor: pointer;">
+                                            USA
+                                            <img style="cursor:pointer ;" class="flag" src="../../static/img/USA.PNG">
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a style="cursor:pointer ;">
+                                            <button type="submit" name="UK" value="UK" style="color: rgb(224, 51, 8); cursor: pointer; border: none; background: none;">UK
+                                            <img style="cursor:pointer ;" class="flag" src="../../static/img/UK.PNG"></button>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a style="cursor:pointer ;">
+                                            <button type="submit" name="SGP" value="SGP" style="color: rgb(224, 51, 8); cursor: pointer; border: none; background: none;">SGP
+                                            <img style="cursor:pointer ;" class="flag" src="../../static/img/SUG.PNG"></button>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a style="cursor:pointer ;">
+                                            <button type="submit" name="OTHER" value="OTHER" style="color: rgb(224, 51, 8); cursor: pointer; border: none; background: none;">AUS
+                                            <img style="cursor:pointer ;" class="flag" src="../../static/img/AUS.PNG"></button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--header-end-->

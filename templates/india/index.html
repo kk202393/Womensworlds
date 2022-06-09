@@ -1,0 +1,152 @@
+{% include "india/header.html" %} {% load static %}
+<br>
+<!-- slider-section-start -->
+<div id="slider">
+    <img class="MYslider" src="{% static 'img/1.PNG' %}">
+    <img class="MYslider" src="{% static 'img/2.jpg' %}">
+    <img class="MYslider" src="{% static 'img/3.jpg' %}">
+    <img class="MYslider" src="{% static 'img/4.jpg' %}">
+</div>
+<!-- slider-section-end -->
+<!--best-selling-section-start-->
+<section class="product">
+    <h2 class="product-category">Best Selling Products for womens</h2>
+    <button class="pre-btn"><img src="{% static 'img1/arrow.png' %}" alt=""></button>
+    <button class="nxt-btn"><img src="{% static 'img1/arrow.png' %}" alt=""></button>
+    <div class="product-container">
+        {% for abc in dest1 %}
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">{{abc.disscunt}}% off</span>
+                <img src="{{abc.img.url}}" class="product-thumb">
+                <a href="/india/product/{{abc.product_slug}}"><button class="card-bnt">Get Details</button></a>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">{{abc.name}}</h2>
+                <p class="product-short-des">{{abc.desc}}</p>
+                <span class="price">Rs.{{abc.sell_price}}</span><span class="actual-price">Rs.{{abc.actual_price}}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<section class="product">
+    <h2 class="product-category">Best Selling Products for Husbands</h2>
+    <button class="pre-btn"><img src="{% static 'img1/arrow.png' %}" alt=""></button>
+    <button class="nxt-btn"><img src="{% static 'img1/arrow.png' %}" alt=""></button>
+    <div class="product-container">
+        {% for abc in dest2 %}
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">{{abc.disscunt}}% off</span>
+                <img src="{{abc.img.url}}" class="product-thumb">
+                <button class="card-bnt">Get Details</button>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">{{abc.name}}</h2>
+                <p class="product-short-des">{{abc.desc}}</p>
+                {% if a == 'IND' %}
+                <span class="price">Rs.{{abc.sell_price}}</span><span class="actual-price">Rs.{{abc.actual_price}}</span> {% elif b == 'USA' %}
+                <span class="price">$.{{abc.sell_price}}</span><span class="actual-price">$.{{abc.actual_price}}</span>{% elif c == 'UK' %}
+                <span class="price">&pound.{{abc.sell_price}}</span><span class="actual-price">&pound.{{abc.actual_price}}</span>{% elif e == 'SGP' %}
+                <span class="price">S$.{{abc.sell_price}}</span><span class="actual-price">S$.{{abc.actual_price}}</span>{% elif f == 'OTHER' %}
+                <span class="price">AU$.{{abc.sell_price}}</span><span class="actual-price">AU$.{{abc.actual_price}}</span> {% else %}
+                <span class="price">Rs.{{abc.sell_price}}</span><span class="actual-price">Rs.{{abc.actual_price}}</span> {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+</section>
+<section class="product">
+    <h2 class="product-category">Best Selling Products for Kids</h2>
+    <button class="pre-btn"><img src="{% static 'img1/arrow.png' %}" alt=""></button>
+    <button class="nxt-btn"><img src="{% static 'img1/arrow.png' %}" alt=""></button>
+    <div class="product-container">
+        {% for abc in dest3 %}
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">{{abc.disscunt}}% off</span>
+                <img src="{{abc.img.url}}" class="product-thumb">
+                <button class="card-bnt">Get Details</button>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">{{abc.name}}</h2>
+                <p class="product-short-des">{{abc.desc}}</p>
+                {% if a == 'IND' %}
+                <span class="price">Rs.{{abc.sell_price}}</span><span class="actual-price">Rs.{{abc.actual_price}}</span> {% elif b == 'USA' %}
+                <span class="price">$.{{abc.sell_price}}</span><span class="actual-price">$.{{abc.actual_price}}</span>{% elif c == 'UK' %}
+                <span class="price">&pound.{{abc.sell_price}}</span><span class="actual-price">&pound.{{abc.actual_price}}</span>{% elif e == 'SGP' %}
+                <span class="price">S$.{{abc.sell_price}}</span><span class="actual-price">S$.{{abc.actual_price}}</span>{% elif f == 'OTHER' %}
+                <span class="price">AU$.{{abc.sell_price}}</span><span class="actual-price">AU$.{{abc.actual_price}}</span> {% else %}
+                <span class="price">Rs.{{abc.sell_price}}</span><span class="actual-price">Rs.{{abc.actual_price}}</span> {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+</section>
+<section class="product">
+    <h2 class="product-category">Best Collection of jewellery</h2>
+    <button class="pre-btn"><img src="{% static 'img1/arrow.png' %}" alt=""></button>
+    <button class="nxt-btn"><img src="{% static 'img1/arrow.png' %}" alt=""></button>
+    <div class="product-container">
+        {% for abc in dest4 %}
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">{{abc.disscunt}}% off</span>
+                <img src="{{abc.img.url}}" class="product-thumb">
+                <button class="card-bnt">Get Details</button>
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">{{abc.name}}</h2>
+                <p class="product-short-des">{{abc.desc}}</p>
+                {% if a == 'IND' %}
+                <span class="price">Rs.{{abc.sell_price}}</span><span class="actual-price">Rs.{{abc.actual_price}}</span> {% elif b == 'USA' %}
+                <span class="price">$.{{abc.sell_price}}</span><span class="actual-price">$.{{abc.actual_price}}</span>{% elif c == 'UK' %}
+                <span class="price">&pound.{{abc.sell_price}}</span><span class="actual-price">&pound.{{abc.actual_price}}</span>{% elif e == 'SGP' %}
+                <span class="price">S$.{{abc.sell_price}}</span><span class="actual-price">S$.{{abc.actual_price}}</span>{% elif f == 'OTHER' %}
+                <span class="price">AU$.{{abc.sell_price}}</span><span class="actual-price">AU$.{{abc.actual_price}}</span> {% else %}
+                <span class="price">Rs.{{abc.sell_price}}</span><span class="actual-price">Rs.{{abc.actual_price}}</span> {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<!-- end best selling section-->
+<!--mid section start-->
+<section class="mid-section">
+    <div class="section-item-container">
+        <img src="{% static 'img/bg-2.jpg' %}" class="section-bg">
+        <div class="section-info">
+            <h1 class="title-mid">premium quality</h1>
+            <p class="info-mid">Many companies have forgotten they sell to actual people. Humans care about the entire experience, not just the marketing or sales or service. To really win in the modern age, you must solve for humans</p>
+        </div>
+    </div>
+</section>
+<!-- mid section end -->
+<!-- collection start -->
+<section class="collection-container">
+    <a href="{% url 'women' %}" class="collection">
+        <img src="{% static 'img1/women-collection.png' %}" alt="">
+        <p class="collection-title">women</p>
+    </a>
+    <a href="{% url 'husband' %}" class="collection">
+        <img src="{% static 'img1/men-collection.png' %}" alt="">
+        <p class="collection-title">Husband</p>
+    </a>
+    <a href="{% url 'accessories' %}" class="collection">
+        <img src="{% static 'img1/accessories-collection.png' %}" alt="">
+        <p class="collection-title">accessories</p>
+    </a>
+    <a href="{% url 'Kids_Wear' %}" class="collection">
+        <img src="{% static 'img1/kids.jpg' %}" alt="">
+        <p class="collection-title">Kids Wear</p>
+    </a>
+    <a href="{% url 'jewellery' %}" class="collection">
+        <img src="{% static 'img1/jewellery.jpg' %}" alt="">
+        <p class="collection-title">jewellery</p>
+    </a>
+</section>
+<!-- collection end -->
+<br> {% include "india/footer.html" %}

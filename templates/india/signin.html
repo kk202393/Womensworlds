@@ -1,0 +1,26 @@
+{% include 'india/header.html' %}
+<br>
+<section class="form-section">
+    <h2>Login</h2>
+    <div class="signup">
+        <form action="" method="post" class="signup-form">
+            {% csrf_token %} {% if messages %} {% for message in messages %}
+            <p {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message}}</p>
+            {% endfor %} {% endif %} {% csrf_token %} {% for fm in form %}
+            <div>
+                {{fm.label_tag}}{{fm}} <small>{{fm.errors|striptags}}</small>
+            </div>
+            {% endfor %} {% if form.non_field_errors %} {% for error in form.non_field_errors %}
+            <p>{{error}}</p>
+            {% endfor %} {% endif %}
+            <br>
+            <small><a href="{% url 'password_resetind' %}">Forgot Password ?</a></small> <br>
+            <br>
+            <div class="text-center text-primary fw-bold"><small>New to Women's World ? <a href="{% url 'loginind' %}"
+            class="text-danger">Create an Account</a> </small></div>
+            <br>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+    </div>
+</section>
+<br> {% include 'india/footer.html' %}

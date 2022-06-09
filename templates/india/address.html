@@ -1,0 +1,41 @@
+{% include 'india/header.html' %}
+<br>
+<section>
+    <div class="row" style="margin-left: 25px; font-size: 20px; color: rgb(224, 51, 8);">
+        <h3>Welcome to women's world {{request.user|capfirst}} </h3>
+        <!-- <div class="list">
+                <ul class="list-unstyled">
+                    <li class="d-grid"><a href="{% url 'profile' %}" class="btn btn-primary">Profile</a></li>
+                    <br>
+                    <li class="d-grid"><a href="{% url 'address' %}" class="btn{{active}}">Address</a></li>
+                </ul>
+            </div> -->
+    </div>
+</section>
+<section>
+    <div class="col-sm-9" style="font-size: 15px; padding:10px;">
+        {% for ad in add %}
+        <div style="border:1px solid black ; padding: 15px;" class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Address {{forloop.counter}}:</h3>
+                    <p>Name: {{ad.name|capfirst}}</p>
+                    <p>Mobile No.: {{ad.Mobile_no}}</p>
+                    <pre>Address: {{ad.address|capfirst}}  </pre>
+                    <p>Locality : {{ad.locality|capfirst}}</p>
+                    <p>City: {{ad.city|capfirst}}</p>
+                    <p>zip: {{ad.zipcode}}</p>
+                    <br>
+                    <a class="remove_add" pid={{address.user.id}}>
+                        <button type="submit" style="border: 1.5px solid black; margin-right: 20px; background: none; cursor: pointer; padding: 10px;">REMOVE</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr> {% endfor %}
+    </div>
+</section>
+<a href="{% url 'profileind' %}"><button style="border: 10px; margin-left:25px; font-size:22px; border: 2px solid rgb(0, 0, 0); padding: 8px; border-radius: 15px; width: 150px; color: rgb(224, 51, 8); cursor: pointer;">Back</button></a>
+
+<br>
+<br> {% include 'india/footer.html' %}

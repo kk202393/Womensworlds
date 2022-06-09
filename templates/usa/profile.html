@@ -1,0 +1,36 @@
+{% include "usa/header.html" %}
+<style>
+    .success {
+        color: rgb(247, 16, 16);
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="../../static/img1/product-4.jpg" alt="img" class="profile_pic">
+            <h3>Welcome to women's world {{request.user|capfirst}}</h3>
+            <br>
+            <ul class="list">
+                <li class="d-grid"><a href="{% url 'profile' %}" class="btn {{active}} ">Profile</a></li>
+                <br>
+                <li class="d-grid"><a href="{% url 'address' %}" class="btn">Address</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-3 fm">
+            <form action="" method="post">
+                {% csrf_token %} {% for fm in form %}
+                <div class="form-group">
+                    {{fm.label_tag}} {{fm}} <small>{{fm.errors|striptags}}</small>
+                </div>
+                {% endfor %}
+                <br>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            {% if messages %} {% for message in messages %}
+            <span {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</span>{% endfor %}{% endif%}
+        </div>
+    </div>
+</div>
+</div>
+<br>
+<br> {% include "usa/footer.html" %}

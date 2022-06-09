@@ -1,0 +1,162 @@
+/* new-best-selling-start */
+
+.product_trail {
+    position: relative;
+    padding: auto;
+}
+
+.product-category_trail {
+    padding: 0 10vw;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    z-index: -2;
+    text-transform: capitalize;
+    font-family: 'cinzel', sans-serif;
+}
+
+.product-container_trail {
+    padding: auto;
+    display: inline-flex;
+    z-index: -1;
+    margin-left: 6px;
+    margin-bottom: 35px;
+}
+
+.product-container_trail::-webkit-scrollbar {
+    display: none;
+}
+
+.product-card_trail {
+    flex: 0 0 auto;
+    width: 250px;
+    height: 460px;
+    margin-right: 10px;
+}
+
+.product-image_trail {
+    position: relative;
+    width: 100%;
+    height: 378px;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.product-thumb_trail {
+    width: 100%;
+    height: 369px;
+    object-fit: cover;
+}
+
+.discount-tag_trail {
+    position: absolute;
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    color: #ff7d7d;
+    right: 10px;
+    top: 10px;
+    text-transform: capitalize;
+}
+
+.card-bnt_trail {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    width: 90%;
+    text-transform: capitalize;
+    border: none;
+    outline: none;
+    background: rgb(197, 197, 197);
+    border-radius: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.product_img {
+    cursor: pointer;
+}
+
+.product-card_trail:hover .card-bnt_trail {
+    opacity: 1;
+}
+
+.card-bnt_trail:hover {
+    background: #6b6767;
+}
+
+.product-info_trail {
+    width: 100%;
+    height: 100px;
+    margin: 0px;
+}
+
+.product-brand_trail {
+    text-transform: capitalize;
+    font-family: 'cinzel', sans-serif;
+    font-weight: 500;
+}
+
+.product-short-des {
+    width: 100%;
+    height: 20px;
+    line-height: hidden;
+    /* overflow: hidden; */
+    opacity: 0.8;
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+.price_trail {
+    font-weight: 900;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.actual-price_trail {
+    margin-left: 20px;
+    opacity: 0.5;
+    color: rgb(245, 68, 68);
+    font-size: 20px;
+    text-decoration: line-through;
+}
+
+#product_id {
+    display: none;
+}
+
+
+/* filter for product */
+
+.filter {
+    /* border: solid rgb(10, 10, 10) 1.5px; */
+    font-size: 16px;
+}
+
+.filter p {
+    margin-left: 50px;
+}
+
+.filter a {
+    cursor: pointer;
+    margin-left: 40px;
+    text-decoration: none;
+    color: #be1c1c;
+}
+
+.filter a:hover {
+    color: #ac0000;
+}
+
+.filter button {
+    cursor: pointer;
+    margin-left: 40px;
+    text-decoration: none;
+    color: #be1c1c;
+    font-size: 16px;
+    border: none;
+    background: none;
+}
