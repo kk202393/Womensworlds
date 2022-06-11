@@ -130,10 +130,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR,STATIC_URL)
-# STATICFILES_DIRS = [
-#     BASE_DIR /"static"    <-- ye hai static file -->
-# ]
+# STATIC_ROOT = os.path.join(BASE_DIR,STATIC_URL)
+STATICFILES_DIRS = [
+    BASE_DIR /"static"   
+]
 
 # EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
