@@ -8,7 +8,6 @@ from locale import currency
 from sre_constants import CATEGORY
 from telnetlib import STATUS
 from time import time
-from turtle import update
 from typing_extensions import Required
 from unicodedata import name
 from django.contrib.auth.models import User
