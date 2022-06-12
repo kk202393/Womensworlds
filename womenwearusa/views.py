@@ -8,8 +8,6 @@ from operator import index
 from os import F_OK
 from pickle import APPEND
 from re import T
-from tkinter import E
-from turtle import done
 from django import dispatch
 from django.contrib  import  messages
 from django.core.mail import EmailMessage
