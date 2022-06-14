@@ -82,7 +82,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "womensworld",
         "HOST": "womensworld.cmopm9rumpwz.us-east-1.rds.amazonaws.com",
-        "port": "3306",
+        "PORT": "3306",
         "USER": "root",
         "PASSWORD": "kailash",
     }
