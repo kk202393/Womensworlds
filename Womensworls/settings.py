@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-ywvah#%iypud7(0z!7cw2(mq1ge61kaox#!8!@3!(cb8qkhz@z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -81,7 +81,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "womensworld",
-        "HOST": "localhost",
+        "HOST": "127.0.0.1",
         "port": "3306",
         "USER": "root",
         "PASSWORD": "kailash",
