@@ -83,7 +83,7 @@ DATABASES = {
         "NAME": "womensworld",
         "HOST": "womensworld.cmopm9rumpwz.us-east-1.rds.amazonaws.com",
         "port": "3306",
-        "USER": "root",
+        "USER": "womensworld",
         "PASSWORD": "Saritawomensworld_2022",
     }
 }
